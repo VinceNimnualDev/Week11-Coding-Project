@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+    <title>Tic-Tac-Toe Game</title>
+</head>
+<body>
+    <div class="container mt-5"> <!--create a container with margin top of 5-->
+        <div class="row justify-content-center"> <!--Top Row and Center Content-->
+            <button class="col-4 btn btn-light board-cell" onclick="makeMove(0)"></button>
+            <button class="col-4 btn btn-light board-cell" onclick="makeMove(1)"></button>
+            <button class="col-4 btn btn-light board-cell" onclick="makeMove(2)"></button>
+        </div>
+        <div class="row justify-content-center"> <!--Middle Row and Center Content-->
+            <button class="col-4 btn btn-light board-cell" onclick="makeMove(3)"></button>
+            <button class="col-4 btn btn-light board-cell" onclick="makeMove(4)"></button>
+            <button class="col-4 btn btn-light board-cell" onclick="makeMove(5)"></button>
+        </div>
+        <div class="row justify-content-center"> <!--Bottom Row and Center Content-->
+            <button class="col-4 btn btn-light board-cell" onclick="makeMove(6)"></button>
+            <button class="col-4 btn btn-light board-cell" onclick="makeMove(7)"></button>
+            <button class="col-4 btn btn-light board-cell" onclick="makeMove(8)"></button>
+
+        </div>
+    </div>
+    <script src="node_modules/boostrap/dist/js/boostrap.bundle.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

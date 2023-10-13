@@ -1,0 +1,7 @@
+.board-cell {
+    width: 175px;
+    height: 175px;
+    font-size: 100px;
+    border: 1px solid #ccc;
+}
+
