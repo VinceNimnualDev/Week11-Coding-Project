@@ -1,11 +1,11 @@
-let board = Array(9).fill(null) // Decalre 'board' array with 9 elements to be filled by start as null
+let board = Array(9).fill(null); // Decalre 'board' array with 9 elements to be filled by start as null
 let currentPlayer = 'X'; // Set starting player to X
 
-function makeMove(position) { // Define function 'makeMove' with 'position' as argument
+function makeMove(position, isComputer = false) { // Define function 'makeMove' with 'position' as argument
     if (board[position] === null) { // Checks if position on board is empty
         board[position] = currentPlayer; // Allows player to set X or O if cell is empty
         document.getElementsByClassName('board-cell')[position].textContent = currentPlayer; // Updates the cell in the DOM to display current players mark
-        document.getElementById("turnDisplay").textContent = `${currentPlayer}'s turn`; // Updates the DOM to toggle the turn display for current player
+        
             if(checkWinner()) { // Checks checkWinner function if players move has a winning combination
                 showGameAlert(`${currentPlayer} wins!`, "success"); // Displays message if there is a winner
                 resetGame(); // Resets game
@@ -19,16 +19,20 @@ function makeMove(position) { // Define function 'makeMove' with 'position' as a
                 return;
             }
 
-            // Make sure there is a toggle for back and forth between human player and computer player
-            if (currentPlayer === 'X') { // Condition to check if player mark is 'X'
-                currentPlayer = 'O'; // If true then computer move is '0'
-                computerMove(); // Computer will execute
-            } else {
-                currentPlayer = 'X'; // IF computer makes a move then goes back to human player 'X'
-            }         
+            togglePlayer(); // Switches Player
+
+            if (currentPlayer === 'O' && !isComputer) { // Toggle back to X if the condition is true
+                computerMove();
+            }
         }
     }
 
+            function togglePlayer() {
+                console.log("Toggling player from", currentPlayer);
+                currentPlayer = (currentPlayer === 'X') ? 'O' : 'X';
+                console.log("Currently player is now", currentPlayer);
+                document.getElementById("turnDisplay").textContent = `${currentPlayer}'s turn`; // Updates the DOM to toggle the turn display for current player
+    }
     
     // Function for computer's move
     function computerMove() {
@@ -45,7 +49,7 @@ function makeMove(position) { // Define function 'makeMove' with 'position' as a
     let randomPosition = availablePositions[Math.floor(Math.random() * availablePositions.length)];
 
     // Exectute move on available position
-    makeMove(randomPosition);
+    makeMove(randomPosition, true);
 }
 
 // Function to check for winning move
@@ -75,6 +79,7 @@ function resetGame() {
 
 }
 
+
 function showGameAlert(message, alertType) {  // funtion of 'showGameAlert' with parameters 'message' and 'alertType'
     let gameAlertMessage = document.getElementById("gameAlertMessage"); // Taking 'gameAlertMessage' from the DOM and will display as message parameter
     gameAlertMessage.textContent = message; // Displays the content of gameAlertMessage as a message
@@ -86,6 +91,7 @@ setTimeout(function() {
     gameAlert.style.display = "none";
 }, 2000); // Set timeout to 2 seconds
 }
+
 
 
 
